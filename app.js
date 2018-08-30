@@ -3,52 +3,28 @@ console.log('Starting app.js');
 const fs = require('fs');
 const os = require('os');
 const _ = require('lodash');
+const yargs = require('yargs');
+
 const notes = require('./notes');
 
-//console.log(_.isString(true));
-//console.log(_.isString('Verint'));
-
-//console.log('Result: ', notes.add(9, -3));
-
-var filteredArray = _.uniq([1,2,3,3,3,1,1,2,2,'Apple',1, 2, 3, 'Apple']);
-console.log(filteredArray);
+const argv = yargs.argv;
+var command = process.argv[2];
+console.log('Command: ', command);
+console.log('Yargs', argv);
 
 
+if (command === 'add'){
+    notes.addNote(argv.title, argv.body);
 
+} else if (command === "list"){
+   notes.getAll();
 
+}  else if (command === 'read'){
+    notes.getNote(argv.title);
 
+}  else if (command === 'remove'){
+    notes.removeNote(argv.title);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//var user = os.userInfo();
-
-//var res = notes.addNote();
-//console.log(res);
-//console.log(user);
-
-//fs.appendFile('greetings.txt', `Hello  ${user.username}! You are ${notes.age} years old!`,  (err) => {
-    //console.log('The "data to append" was appended to file!');
-  //});
-//console.log(notes);
+}else {
+    console.log("I do not recognize the command!");
+};
