@@ -10,7 +10,7 @@ const notes = require('./notes');
 
 //console.log('Result: ', notes.add(9, -3));
 
-var filteredArray = _.uniq([1,2,3,3,3,1,1,2,2,'Google',1, 2, 3, 'Google']);
+var filteredArray = _.uniq([1,2,3,3,3,1,1,2,2,'Apple',1, 2, 3, 'Apple']);
 console.log(filteredArray);
 
 
